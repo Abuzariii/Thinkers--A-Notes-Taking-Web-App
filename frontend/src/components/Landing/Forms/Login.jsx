@@ -7,7 +7,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useMyVariable } from "../../../context/email";
 
-export default function Login() {
+export default function Login({ setIsLoggedIn }) {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [isThinker, setIsThinker] = useState("");
@@ -32,8 +32,9 @@ export default function Login() {
             // Blank all fields
             setLoginEmail("");
             setLoginPassword("");
-            navigateTo("/dashboard");
+            setIsLoggedIn(true);
             setMyVariable(response.data.email);
+            navigateTo("/dashboard");
           }
         })
         .catch((error) => {

@@ -2,8 +2,16 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { GiFemaleLegs } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
 
-function NavBar() {
+function NavBar({ isLoggedIn, setIsLoggedIn }) {
+  const navigateTo = useNavigate();
+
+  function Logout() {
+    localStorage.removeItem("thinker");
+    navigateTo("/");
+    setIsLoggedIn(false);
+  }
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -16,6 +24,7 @@ function NavBar() {
           <Nav className="me-auto">
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/about">About Me</Nav.Link>
+            {isLoggedIn && <Nav.Link onClick={Logout}>Logout</Nav.Link>}
           </Nav>
         </Navbar.Collapse>
       </Container>

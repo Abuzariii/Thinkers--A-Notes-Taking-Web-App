@@ -7,7 +7,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useMyVariable } from "../../../context/email";
 
-export default function Signup() {
+export default function Signup({ setIsLoggedIn }) {
   const [signupEmail, setSignupEmail] = useState("");
   const [signupUsername, setSignupUsername] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
@@ -49,6 +49,7 @@ export default function Signup() {
             setSignupPassword("");
             setSignupConfirmPassword("");
             setMyVariable(response.data.email);
+            setIsLoggedIn(true);
             navigateTo("/dashboard");
           })
           .catch((error) => {

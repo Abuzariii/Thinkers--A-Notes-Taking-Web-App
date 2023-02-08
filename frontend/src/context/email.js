@@ -4,12 +4,12 @@ export const MyVariableContext = createContext(null);
 
 export const MyVariableProvider = ({ children }) => {
   const [myVariable, setMyVariable] = useState(() => {
-    const storedValue = localStorage.getItem("myVariable");
+    const storedValue = localStorage.getItem("thinker");
     return storedValue ? JSON.parse(storedValue) : "";
   });
 
   useEffect(() => {
-    localStorage.setItem("myVariable", JSON.stringify(myVariable));
+    localStorage.setItem("thinker", JSON.stringify(myVariable));
   }, [myVariable]);
 
   return (

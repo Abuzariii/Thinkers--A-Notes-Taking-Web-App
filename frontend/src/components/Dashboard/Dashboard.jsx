@@ -5,9 +5,14 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import React, { useState, useEffect, useCallback } from "react";
 import { useMyVariable } from "../../context/email";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
+  const navigateTo = useNavigate();
   const { myVariable } = useMyVariable();
+  if (myVariable === "") {
+    navigateTo("/");
+  }
   const email = myVariable;
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("");

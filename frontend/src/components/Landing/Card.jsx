@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Login from "./Forms/Login";
 import Signup from "./Forms/Signup";
 
-export default function Card() {
+export default function Card({ setIsLoggedIn }) {
   const [In, setIn] = useState(true);
 
   return (
@@ -13,8 +13,8 @@ export default function Card() {
       <div className={classes.Container}>
         <div className={classes.Card}>
           <div className={classes.formsDiv}>
-            {In && <Login />}
-            {!In && <Signup />}
+            {In && <Login setIsLoggedIn={setIsLoggedIn} />}
+            {!In && <Signup setIsLoggedIn={setIsLoggedIn} />}
             <Form.Check
               onClick={() => {
                 setIn(!In);
