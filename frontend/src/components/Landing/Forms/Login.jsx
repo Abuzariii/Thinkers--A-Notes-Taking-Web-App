@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useMyVariable } from "../../../context/email";
+import jwt_decode from "jwt-decode";
 
 export default function Login({ setIsLoggedIn }) {
   const [loginEmail, setLoginEmail] = useState("");
@@ -52,6 +53,22 @@ export default function Login({ setIsLoggedIn }) {
         });
     }
   }
+  const google = window.google;
+  function handleCredentialResponse(response) {
+    console.log(jwt_decode(response.credential));
+  }
+  window.onload = function () {
+    google.accounts.id.initialize({
+      client_id:
+        "815199749481-cfbeq3a2qogs21lfcpp9ht3vs4l00ks2.apps.googleusercontent.com",
+      callback: handleCredentialResponse,
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("buttonDiv"),
+      { theme: "outline", size: "large" } // customization attributes
+    );
+    google.accounts.id.prompt(); // also display the One Tap dialog
+  };
   return (
     <Form className={classes.loginForm} onSubmit={submitHandler}>
       {isThinker === "isn't" && (
@@ -90,6 +107,7 @@ export default function Login({ setIsLoggedIn }) {
       <Button variant="primary" type="submit">
         Login
       </Button>
+      <div id="buttonDiv"></div>
     </Form>
   );
 }
