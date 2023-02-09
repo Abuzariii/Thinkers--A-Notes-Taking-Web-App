@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const signupRoutes = require("./Routes/signupRoutes");
 const loginRoutes = require("./Routes/loginRoutes");
+const googleAuthRoutes = require("./Routes/googleAuthRoutes");
 const notesRoutes = require("./Routes/notesRoutes");
 const cors = require("cors");
 require("dotenv").config();
@@ -14,6 +15,7 @@ app.use(cors());
 // Routes and Requests
 app.use("/thinkers", signupRoutes);
 app.use("/login", loginRoutes);
+app.use("/googleAuth", googleAuthRoutes);
 app.use("/dashboard", notesRoutes);
 
 // Listen
