@@ -1,5 +1,5 @@
 # Thinkers--A-Notes-Taking-Web-App
-A full stack notes taking app in MERN with authentication without using a third party library.
+A full stack notes taking app in MERN with authentication.
 
 ## To Start the App
 
