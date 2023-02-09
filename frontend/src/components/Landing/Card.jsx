@@ -38,7 +38,7 @@ export default function Card({ setIsLoggedIn }) {
   window.onload = function () {
     google.accounts.id.initialize({
       client_id:
-        "815199749481-cfbeq3a2qogs21lfcpp9ht3vs4l00ks2.apps.googleusercontent.com",
+        "<YOUR CLIENT ID HERE>",
       callback: handleCredentialResponse,
     });
     google.accounts.id.renderButton(
